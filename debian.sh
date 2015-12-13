@@ -40,7 +40,8 @@ dpkg-source --commit
 
 # debian/install must contain the list of scripts to install 
 # as well as the target directory
-echo usr/bin/$SOURCEBIN usr/bin >> debian/install
+echo usr/share/lua/5.1/$SOURCEBIN usr/share/lua/5.1 >> debian/install
+echo "ln -s usr/share/lua/5.1/$SOURCEBIN usr/share/lua/5.2" >> debian/install
 cp $SOURCEDOC usr/share/doc/$DEBFOLDER/$SOURCEDOC
 cp $INSTALLDOC usr/share/doc/$DEBFOLDER/$INSTALLDOC
 cp $HACKDOC usr/share/doc/$DEBFOLDER/$HACKDOC
@@ -54,13 +55,13 @@ Priority: optional
 Maintainer: cmotc <cmotc@openmailbox.org>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Homepage: https://www.github.com/cmotc/svirfneblin-netmonitor-widget
-#Vcs-Git: git@github.com:cmotc/svirfneblin-netmonitor-widget
-#Vcs-Browser: https://www.github.com/cmotc/svirfneblin-netmonitor-widget
+Homepage: https://www.github.com/cmotc/conky-clicky
+#Vcs-Git: git@github.com:cmotc/conky-clicky
+#Vcs-Browser: https://www.github.com/cmotc/conky-clicky
 
 Package: $DEBFOLDER
 Architecture: all
-Depends: lightdm, lightdm-gtk-greeter, awesome (>= 3.4), svirfneblin-panel \${misc:Depends}
+Depends: lightdm, lightdm-gtk-greeter, conky, \${misc:Depends}
 Description: A network monitoring widget for awesomewm
 " > debian/control
 
